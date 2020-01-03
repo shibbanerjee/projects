@@ -1,0 +1,37 @@
+#Write a program that continuous takes input of an input string and only stops if the keyword \end is passed.
+#It give the output as follows --How are you? This is me.You dont say. Where are you?
+
+#so any phrase question passed should end with a question mark otherwise it should end with a fullstop
+
+
+#Steps: 
+   
+#    1. Define a function that takes in a phrase and capitalized it.
+#    2. then it check if the phrase starts with question words and add return a ? with the phrase
+#    3. Else it add a '.' to the end of the phrase
+#    4. Start a while loop and ensure the user's input is lowercase with with the .lower method
+#    5. Define an empty list
+#    6. Break the loop if the user enters \end
+#    7. else append the user inputs to the defined list
+#    8. return the items of the list by joining them.
+
+
+
+
+def sentence_maker(phrase):
+    interrogatives = ("how","what","why","where","when")
+    capitalized = phrase.capitalize()
+    print (capitalized)
+    if phrase.startswith(interrogatives):
+        return "{}?".format(capitalized)
+    return "{}.".format(capitalized)
+
+results = []
+
+while True:
+    user_input = input("Say something: ").lower()
+    if user_input == '\end':
+        break
+    else:
+        results.append(sentence_maker(user_input))
+print (" ".join(results))
