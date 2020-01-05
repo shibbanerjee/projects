@@ -1,0 +1,59 @@
+what is json
+
+JSON stands for JavaScript Object Notation
+
+JSON is a lightweight format for storing and transporting data
+
+JSON is often used when data is sent from a server to a web page
+
+JSON is "self-describing" and easy to understand
+
+
+How to load a json file?
+
+To open a json file we can
+
+import json
+
+data = json.load(open("filename.json"))
+
+But in case we are getting the same UnicodeEncodeError when saving scraped web content to a file. To fix it I replaced this code:
+
+with open(fname) as f: #where fname is filename
+    f.read()
+with this:
+
+import io
+with io.open(fname, "r", encoding="utf-8") as f:
+    f.read()
+Using io gives you backward compatibility with Python 2.
+
+If you only need to support Python 3 you can use the builtin open function instead:
+
+with open(fname, "r", encoding="utf-8") as f:
+    f.read()
+
+Sequence matching -
+
+Two useful ways :
+
+Sequence matching can be done using the difflib builtin python library
+
+1. Using sequence matcher() method from difflib library
+
+Let us take the below example:
+
+a = 'Thanks for calling American Expansion'
+b = 'Thanks for calling American Express'
+
+seq = difflib.SequenceMatcher(None,a,b)
+d = seq.ratio()*100
+print(d)
+### OUTPUT: 88.88888
+
+The value of D can be compared to check similarity of the word
+
+reference - https://datascience.stackexchange.com/questions/12575/similarity-between-two-words
+
+2. Using get_close_matches()  method from difflib library
+
